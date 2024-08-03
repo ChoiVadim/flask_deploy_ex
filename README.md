@@ -182,3 +182,9 @@ Sets the permissions of the specified directory. Ensure this is appropriate for 
 sudo tail /var/log/nginx/error.log
 ```
 Views the Nginx error log for troubleshooting any issues.
+
+### Obtain an SSL Certificate
+```bash
+sudo apt install certbot python3-certbot-nginx
+sudo certbot --nginx
+```
