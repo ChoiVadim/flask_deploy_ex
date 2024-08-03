@@ -6,12 +6,12 @@ This document explains the steps and commands used to deploy a Flask application
 
 ### Create a New User
 ```sh
-adduser username
+adduser user_name
 ```
 
 ### Grant Sudo Privileges
 ```sh
-usermod -aG sudo username
+usermod -aG sudo user_name
 ```
 Adds the user to the sudo group, allowing them to run commands with administrative privileges.
 
@@ -31,7 +31,7 @@ Restarts the SSH service to apply any changes made to the configuration file.
 
 ### SSH into the Server
 ```sh
-ssh username@domainname.com
+ssh username@domain_name.com
 ```
 Connects to the server using SSH. Replace username and domainname.com with your actual username and server domain or IP address.
 
@@ -88,7 +88,7 @@ Description=gunicorn daemon
 After=network.target
 
 [Service]
-User=vadim  
+User=user_name  
 Group=www-data
 WorkingDirectory=/home/user_name/flask_app
 Environment="PATH=/home/user_name/flask_app/venv/bin"
@@ -122,7 +122,7 @@ Installs the Nginx web server.
 ### Configure Nginx
 
 ```sh
-sudo nano /etc/nginx/sites-available/app.conf
+sudo nano /etc/nginx/sites-available/app_name.conf
 ```
 Opens the Nginx configuration file for your application.
 
