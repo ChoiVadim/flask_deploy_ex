@@ -104,9 +104,9 @@ Start and Enable the Gunicorn Service
 
 ```sh
 
-sudo systemctl start app
-sudo systemctl enable app
-sudo systemctl status app
+sudo systemctl start app_name
+sudo systemctl enable app_name
+sudo systemctl status app_name
 ```
 Starts the Gunicorn service, enables it to start on boot, and checks its status.
 
