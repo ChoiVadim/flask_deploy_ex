@@ -42,7 +42,7 @@ git clone url
 ```
 Clones the repository containing your Flask application. Replace url with the URL of your Git repository.
 
-#Create and Activate a Python Virtual Environment
+# Create and Activate a Python Virtual Environment
 
 ```sh
 python3 -m venv venv
@@ -50,7 +50,7 @@ source venv/bin/activate
 ```
 Creates a virtual environment named venv and activates it. This isolates your project's dependencies.
 
-###Install Python Dependencies
+### Install Python Dependencies
 
 ```sh
 pip install -r requirements.txt
@@ -141,7 +141,7 @@ server {
 ```
 This configuration sets up Nginx to proxy requests to Gunicorn via the Unix socket.
 
-###Enable the Nginx Site
+### Enable the Nginx Site
 
 ```sh
 sudo ln -s /etc/nginx/sites-available/app_name.conf /etc/nginx/sites-enabled/
