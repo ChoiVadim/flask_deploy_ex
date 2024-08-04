@@ -9,3 +9,11 @@ def home():
 @test_routes.route('/login')
 def login():
     return render_template("login.html")
+
+@test_routes.route('/switch')
+def switch():
+    return render_template("switch.html")
+
+@test_routes.route("/upload")
+def upload():
+    return render_template("upload.html")
