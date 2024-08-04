@@ -33,14 +33,12 @@ Restarts the SSH service to apply any changes made to the configuration file.
 ```sh
 ssh username@domain_name.com
 ```
-Connects to the server using SSH. Replace username and domainname.com with your actual username and server domain or IP address.
 
 ### Clone the Git Repository
 
 ```sh
 git clone url
 ```
-Clones the repository containing your Flask application. Replace url with the URL of your Git repository.
 
 # Create and Activate a Python Virtual Environment
 
@@ -48,7 +46,6 @@ Clones the repository containing your Flask application. Replace url with the UR
 python3 -m venv venv
 source venv/bin/activate
 ```
-Creates a virtual environment named venv and activates it. This isolates your project's dependencies.
 
 ### Install Python Dependencies
 
@@ -56,7 +53,6 @@ Creates a virtual environment named venv and activates it. This isolates your pr
 pip install -r requirements.txt
 pip install gunicorn
 ```
-Installs the Python packages listed in requirements.txt and Gunicorn, the WSGI server.
 
 ### Edit the WSGI Entry Point
 
@@ -92,7 +88,7 @@ User=user_name
 Group=www-data
 WorkingDirectory=/home/user_name/flask_app
 Environment="PATH=/home/user_name/flask_app/venv/bin"
-ExecStart=/home/user_name/flask_app/venv/bin/gunicorn --workers 3 --bind unix:/home/user_name/flask_app/peak.sock wsgi:app
+ExecStart=/home/user_name/flask_app/venv/bin/gunicorn --workers 3 --bind unix:/home/user_name/flask_app/app_name.sock wsgi:app
 
 [Install]
 WantedBy=multi-user.target
@@ -135,7 +131,7 @@ server {
 
     location / {
         include proxy_params;
-        proxy_pass http://unix:/home/user_name/flask_app/peak.sock;
+        proxy_pass http://unix:/home/user_name/flask_app/app_name.sock;
     }
 }
 ```
