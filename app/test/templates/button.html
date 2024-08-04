@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Tsoi Vadim{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block body %}
+<button>
+  <a href="{{ url_for('test.login') }}" class="btn2"><span class="spn2">HELLO !</span></a>
+</button>
+{% endblock %}
