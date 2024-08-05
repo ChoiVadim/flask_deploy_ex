@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block style %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+{% endblock %}
+
+{% block body %}
+<form class="form", action="{{ url_for('test.register') }}", method="post">
+    <p class="title">Register </p>
+    <p class="message">
+        {% if message %}
+            {{ message }}
+        {% else %}
+            Signup now and get full access to our app.
+        {% endif %}
+    </p>
+    <label>
+        <input name="username" required="" placeholder="" type="text" class="input">
+        <span>Username</span>
+    </label>
+            
+    <label>
+        <input name="email" required="" placeholder="" type="email" class="input">
+        <span>Email</span>
+    </label> 
+        
+    <label>
+        <input name="password" required="" placeholder="" type="password" class="input">
+        <span>Password</span>
+    </label>
+    <label>
+        <input required="" placeholder="" type="password" class="input">
+        <span>Confirm password</span>
+    </label>
+    <button class="submit">Submit</button>
+    <p class="signin">Already have an acount ? <a href="#">Signin</a> </p>
+</form>
+{% endblock %}
