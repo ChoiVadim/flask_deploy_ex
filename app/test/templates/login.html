@@ -8,9 +8,15 @@
 {% block body %}
 <div class="form-container">
 	<p class="title">Login</p>
-	<form  action="{{ url_for('test.upload') }}" class="form">
+	<form  action="{{ url_for('test.login') }}" class="form" method="post">
 		<div class="input-group">
-			<label for="username">Username</label>
+			<label for="username">
+				{% if message %}
+					{{ message }}
+				{% else %}
+					Username
+				{% endif %}
+			</label>
 			<input type="text" name="username" id="username" placeholder="">
 		</div>
 		<div class="input-group">

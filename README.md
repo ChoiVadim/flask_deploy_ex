@@ -168,7 +168,7 @@ Enables the firewall, deletes any rule allowing port 5000 (used by Gunicorn), an
 
 ```sh
 sudo chmod 775 /home/user_name/
-sudo chown user_name:www-data /home/user_name/flask_app/peak.sock
+sudo chown user_name:www-data /home/user_name/flask_app/app_name.sock
 ```
 Sets the permissions of the specified directory. Ensure this is appropriate for your use case and security policies.
 
@@ -179,8 +179,30 @@ sudo tail /var/log/nginx/error.log
 ```
 Views the Nginx error log for troubleshooting any issues.
 
-### Obtain an SSL Certificate
+## Obtain an SSL Certificate
 ```bash
 sudo apt install certbot python3-certbot-nginx
 sudo certbot --nginx
+```
+
+### Check File Permissions
+
+```bash
+sudo ls -l /etc/letsencrypt/archive/yourdomain.com/
+```
+The files should be accessible by the Nginx process, typically running as www-data or nginx.
+
+### Fix Potential Permission Issues
+```bash
+sudo chmod 755 /etc/letsencrypt
+sudo chmod 755 /etc/letsencrypt/live
+sudo chmod 755 /etc/letsencrypt/archive
+sudo chmod 755 /etc/letsencrypt/archive/yourdomain.com
+sudo chmod 644 /etc/letsencrypt/archive/yourdomain.com/*
+```
+
+### Renew or Reissue Certificates
+```bash
+sudo certbot renew
+sudo systemctl restart nginx
 ```
