@@ -94,7 +94,7 @@ def upload():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(Config.UPLOAD_FOLDER, filename))
-            return render_template("upload.html", message="File successfully uploaded")
+            return redirect(url_for("test.list_files"))
         else:
             return render_template("upload.html", message="Invalid file type")
 
