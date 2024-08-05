@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Switch{% endblock %}
+{% block title %}Upload{% endblock %}
 
 {% block style %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/upload.css') }}">
@@ -8,6 +8,7 @@
 {% block body %}
 <div class="modal">
   <div class="modal-header">
+    <!-- Your modal header content -->
     <div class="modal-logo">
       <span class="logo-circle">
         <svg
@@ -35,27 +36,22 @@
         </svg>
       </span>
     </div>
-    <button class="btn-close">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-      >
-        <path fill="none" d="M0 0h24v24H0V0z"></path>
-        <path
-          d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"
-          fill="var(--c-text-secondary)"
-        ></path>
-      </svg>
-    </button>
   </div>
   <div class="modal-body">
-    <p class="modal-title">Upload a file</p>
+    <p class="modal-title">
+      {% if message %}
+        {{ message }}
+      {% else %}
+        Upload a file
+      {% endif %}
+    </p>
     <p class="modal-description">Attach the file below</p>
-    <button class="upload-area">
-      <span class="upload-area-icon">
-        <svg
+    <!-- Form for file upload -->
+    <form action="{{ url_for('test.upload') }}" method="post" enctype="multipart/form-data">
+      <button class="upload-area" type="button" onclick="document.getElementById('file-input').click();">
+        <span class="upload-area-icon">
+          <!-- Your upload icon SVG -->
+          <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
           width="35"
@@ -71,19 +67,19 @@
               fill="var(--c-action-primary)"
             ></path>
           </g>
-        </svg>
-      </span>
-      <span class="upload-area-title">Drag file(s) here to upload.</span>
-      <span class="upload-area-description">
-        Alternatively, you can select a file by <br /><strong
-          >clicking here</strong
-        >
-      </span>
-    </button>
-  </div>
-  <div class="modal-footer">
-    <button class="btn-secondary">Cancel</button>
-    <button class="btn-primary">Upload File</button>
+          </svg>
+        </span>
+        <span class="upload-area-title">Drag file(s) here to upload.</span>
+        <span class="upload-area-description">
+          Alternatively, you can select a file by <br /><strong>clicking here</strong>
+        </span>
+      </button>
+      <input type="file" id="file-input" name="file" style="display: none;">
+      <div class="modal-footer">
+        <button class="btn-secondary" type="button">Cancel</button>
+        <button class="btn-primary" type="submit">Upload File</button>
+      </div>
+    </form>
   </div>
 </div>
 {% endblock %}
