@@ -1,13 +1,14 @@
 from flask import render_template, request, url_for, redirect, Blueprint, session
 from werkzeug.security import check_password_hash, generate_password_hash
+
 from app.test.models import User
 from app.app import db
 
 
-test_routes = Blueprint('test', __name__, template_folder="templates")
+test_routes = Blueprint("test", __name__, template_folder="templates")
 
 
-@test_routes.route('/')
+@test_routes.route("/")
 def home():
     return render_template("index.html")
 
@@ -24,7 +25,9 @@ def login():
             session["user_id"] = user.user_id
             return redirect("/upload")
         else:
-            return render_template("login.html", message="Invalid username or password.")
+            return render_template(
+                "login.html", message="Invalid username or password."
+            )
 
     return render_template("login.html")
 
@@ -56,7 +59,7 @@ def logout():
     return redirect("/")
 
 
-@test_routes.route('/switch')
+@test_routes.route("/switch")
 def switch():
     return render_template("switch.html")
 
