@@ -18,8 +18,10 @@ def create_app():
 
     with app.app_context():
         from app.test.routes import test_routes
+        from app.ev_wheel.routes import ev_wheels_routes
 
         app.register_blueprint(test_routes)
+        app.register_blueprint(ev_wheels_routes)
 
         db.create_all()
 
